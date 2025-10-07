@@ -1,2 +1,2 @@
 # cornkeeper
-Repo for the Cornkeeper game. Made for the 2025 ACMW Scream Jam
+Repo for the Cornkeeper game. Made for the 2025 ACMW Scream Jam, using the Godot game engine.
