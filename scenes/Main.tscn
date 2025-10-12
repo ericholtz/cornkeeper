@@ -14,6 +14,7 @@ sky = SubResource("Sky_rvslj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bbpv"]
 albedo_texture = ExtResource("1_rvslj")
+uv1_scale = Vector3(0.16, 0.16, 0.16)
 uv1_triplanar = true
 texture_filter = 0
 
