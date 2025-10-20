@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="CornKeeper"
-run/main_scene="uid://c8b4qayj4f0tv"
+run/main_scene="uid://c4e51kfpx6arm"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [input]
 
