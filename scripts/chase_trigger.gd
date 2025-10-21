@@ -6,7 +6,7 @@ extends Area3D
 @onready var ben_bot: CharacterBody3D = $"../../BenBot"
 @onready var chase_red_overlay: ColorRect = $"../../Player/head/Camera3D/CanvasLayer/ChaseRedOverlay"
 @onready var directional_light_3d: DirectionalLight3D = $"../../Environment/DirectionalLight3D"
-
+@onready var world_environment: WorldEnvironment = $"../../Environment/WorldEnvironment"
 
 func _on_chase_trigger_body_entered(body: Node3D) -> void:
 	if body.name != "Player":
@@ -21,6 +21,7 @@ func _on_chase_trigger_body_entered(body: Node3D) -> void:
 	
 	# spin player
 	player.position = Vector3(self.position.x, player.position.y, self.position.z)
+	player.find_child("head").rotation.x = 0
 	var player_spin1 = create_tween()
 	player_spin1.tween_property(player, "rotation_degrees", Vector3(0, 180, 0), 2)
 	player_spin1.play()

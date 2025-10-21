@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dgt7opul7e8ux" path="res://assets/Scary Vampire.ttf" id="2_jlsqs"]
 [ext_resource type="AudioStream" uid="uid://8bsu5grohm2h" path="res://assets/audio/ambience.mp3" id="2_lhr70"]
 [ext_resource type="AudioStream" uid="uid://tfmdx4pxj4lq" path="res://assets/audio/horror.mp3" id="3_nfivy"]
+[ext_resource type="Texture2D" uid="uid://csguaojdlf1ho" path="res://assets/textures/night-sky.jpg" id="5_nfivy"]
 [ext_resource type="PackedScene" uid="uid://cch5xs6eu3kly" path="res://scenes/items/Item.tscn" id="5_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://bn2dojd6ksrww" path="res://assets/textures/ripped_jeans.png" id="6_lhr70"]
 [ext_resource type="Texture2D" uid="uid://boic2psxg1552" path="res://assets/textures/bush.png" id="7_bjd11"]
@@ -61,12 +62,14 @@ _data = {
 &"textflash": SubResource("Animation_jlsqs")
 }
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_elqb8"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1nqs0"]
+panorama = ExtResource("5_nfivy")
 
 [sub_resource type="Sky" id="Sky_rvslj"]
-sky_material = SubResource("ProceduralSkyMaterial_elqb8")
+sky_material = SubResource("PanoramaSkyMaterial_1nqs0")
 
 [sub_resource type="Environment" id="Environment_0bbpv"]
+background_mode = 2
 sky = SubResource("Sky_rvslj")
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.03
@@ -2826,6 +2829,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7289083, 0)
 follow_viewport_enabled = true
 
 [node name="PixelShader" type="ColorRect" parent="Player/head/Camera3D/CanvasLayer"]
+z_index = 1
 material = SubResource("ShaderMaterial_bb450")
 anchors_preset = 15
 anchor_right = 1.0
@@ -2861,6 +2865,10 @@ mesh = SubResource("QuadMesh_wp0k4")
 surface_material_override/0 = SubResource("StandardMaterial3D_bjd11")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="BenBot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BenBot"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.1000001, 0)
+shape = SubResource("ConvexPolygonShape3D_qmy6f")
 
 [node name="Area3D" type="Area3D" parent="BenBot"]
 
