@@ -7,3 +7,4 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	main.player.disable()
 	main.show_end_ui()
+	get_tree().paused = true
