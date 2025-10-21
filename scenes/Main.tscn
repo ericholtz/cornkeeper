@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c4e51kfpx6arm"]
+[gd_scene load_steps=43 format=3 uid="uid://c4e51kfpx6arm"]
 
 [ext_resource type="Script" uid="uid://1hhm4frsfmg0" path="res://scripts/player.gd" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://b4f4ftufuuk3g" path="res://scripts/main.gd" id="1_jlsqs"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bx2q60i7chfgu" path="res://assets/textures/maze_sign.png" id="7_wp0k4"]
 [ext_resource type="Texture2D" uid="uid://byxkxn6xkw4u2" path="res://assets/textures/corn.png" id="8_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://bpxpxnpx2fboa" path="res://assets/textures/door.png" id="8_cvmbd"]
+[ext_resource type="Texture2D" uid="uid://cd7jn77jrt0hm" path="res://assets/textures/phone.png" id="10_1iba3"]
 [ext_resource type="Script" path="res://scripts/ben_bot.gd" id="11_bjd11"]
 [ext_resource type="Texture2D" uid="uid://bea3unyqo7h6k" path="res://assets/textures/ben.png" id="11_wp0k4"]
 [ext_resource type="Script" uid="uid://b8tixyokvj6yj" path="res://scripts/chase_trigger.gd" id="13_ft6cd"]
@@ -229,6 +230,15 @@ light_energy = 1.5
 
 [node name="Items" type="Node3D" parent="."]
 
+[node name="Intropaper" parent="Items" instance=ExtResource("5_vcsgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1137018, 0.56043774, -7.568927)
+description = "Another succesful day of running my corn maze in the books...
+Money's been tight this October, so this had been a big help!
+There's just one problem... Someone went missing today.
+
+Guess I have to go find them before closing up,
+don't want any bad press y'know..."
+
 [node name="Paper" parent="Items" instance=ExtResource("5_vcsgt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.668636, 0.5066567, -29.888865)
 description = "\"It found me. I can't hide for much longer.
@@ -238,7 +248,8 @@ If anyone finds this, I'm sorry.\""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.014793, 0.5393713, -44.005325)
 sprite_texture = ExtResource("6_lhr70")
 description = "Ripped clothes
-This isn't looking good...
+
+This really isn't looking good...
 "
 
 [node name="Can" parent="Items" instance=ExtResource("5_vcsgt")]
@@ -247,12 +258,22 @@ sprite_texture = ExtResource("7_qmy6f")
 description = "Soda can
 
 damn city folk litering on my farm...
-I knew opening a corn maze was a bad idea!"
+Have they no respect for my wonderful maze of maize?"
 
 [node name="Paper2" parent="Items" instance=ExtResource("5_vcsgt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4880857, 0.5066567, -52.079174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.407668, 0.5066567, -70.42744)
 description = "\"If you value your life, please...
-don't go any further...\""
+don't go any further...\"
+
+..."
+
+[node name="phone" parent="Items" instance=ExtResource("5_vcsgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.43014, 0.5066567, -35.86799)
+sprite_texture = ExtResource("10_1iba3")
+description = "One of them \"mobile phones\"
+
+Ain't these expensive?
+Someone wouldn't just leave this here..."
 
 [node name="Level" type="Node3D" parent="."]
 
