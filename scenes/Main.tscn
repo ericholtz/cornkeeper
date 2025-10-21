@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c4e51kfpx6arm"]
+[gd_scene load_steps=40 format=3 uid="uid://c4e51kfpx6arm"]
 
 [ext_resource type="Script" uid="uid://1hhm4frsfmg0" path="res://scripts/player.gd" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://b4f4ftufuuk3g" path="res://scripts/main.gd" id="1_jlsqs"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://v7cisiedn0tw" path="res://assets/textures/Dirt_01.png" id="1_rvslj"]
 [ext_resource type="FontFile" uid="uid://dgt7opul7e8ux" path="res://assets/Scary Vampire.ttf" id="2_jlsqs"]
 [ext_resource type="AudioStream" uid="uid://8bsu5grohm2h" path="res://assets/audio/ambience.mp3" id="2_lhr70"]
-[ext_resource type="Shader" uid="uid://dxjvowr432mde" path="res://shaders/pixelate.gdshader" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://cch5xs6eu3kly" path="res://scenes/items/Item.tscn" id="5_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://bn2dojd6ksrww" path="res://assets/textures/ripped_jeans.png" id="6_lhr70"]
 [ext_resource type="Texture2D" uid="uid://boic2psxg1552" path="res://assets/textures/bush.png" id="7_bjd11"]
@@ -14,8 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://bx2q60i7chfgu" path="res://assets/textures/maze_sign.png" id="7_wp0k4"]
 [ext_resource type="Texture2D" uid="uid://byxkxn6xkw4u2" path="res://assets/textures/corn.png" id="8_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://bpxpxnpx2fboa" path="res://assets/textures/door.png" id="8_cvmbd"]
-[ext_resource type="Script" uid="uid://b2qkhw45a6f24" path="res://scenes/ben_bot.gd" id="11_bjd11"]
+[ext_resource type="Script" uid="uid://b2qkhw45a6f24" path="res://scripts/ben_bot.gd" id="11_bjd11"]
 [ext_resource type="Texture2D" uid="uid://bea3unyqo7h6k" path="res://assets/textures/ben.png" id="11_wp0k4"]
+[ext_resource type="Script" uid="uid://b8tixyokvj6yj" path="res://scripts/chase_trigger.gd" id="13_ft6cd"]
+[ext_resource type="Shader" uid="uid://dxjvowr432mde" path="res://shaders/pixelate.gdshader" id="15_ft6cd"]
+[ext_resource type="Shader" uid="uid://bkchfo5cwd3ab" path="res://shaders/red.gdshader" id="16_bb450"]
 
 [sub_resource type="Theme" id="Theme_q8u5g"]
 default_font = ExtResource("2_jlsqs")
@@ -100,9 +102,15 @@ uv1_offset = Vector3(0, 0.5, 0)
 uv1_triplanar = true
 texture_filter = 0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rarhs"]
-shader = ExtResource("3_0bbpv")
+[sub_resource type="BoxShape3D" id="BoxShape3D_bb450"]
+size = Vector3(3.985, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bb450"]
+shader = ExtResource("15_ft6cd")
 shader_parameter/pixel_size = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rarhs"]
+shader = ExtResource("16_bb450")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rarhs"]
 
@@ -199,6 +207,7 @@ environment = SubResource("Environment_0bbpv")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -0.46210456, 0.88682544, 0, -0.88682544, -0.46210456, 0, 6.2376814, 0)
 visible = false
+light_color = Color(1, 0, 0, 1)
 light_energy = 1.5
 
 [node name="Items" type="Node3D" parent="."]
@@ -2782,6 +2791,14 @@ visible = false
 use_collision = true
 flip_faces = true
 
+[node name="ChaseTrigger" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.6, -92)
+script = ExtResource("13_ft6cd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/ChaseTrigger"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_bb450")
+
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.266518, 0)
 script = ExtResource("1_elqb8")
@@ -2794,7 +2811,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7289083, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/head/Camera3D"]
 follow_viewport_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="Player/head/Camera3D/CanvasLayer"]
+[node name="PixelShader" type="ColorRect" parent="Player/head/Camera3D/CanvasLayer"]
+material = SubResource("ShaderMaterial_bb450")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChaseRedOverlay" type="ColorRect" parent="Player/head/Camera3D/CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_rarhs")
 anchors_preset = 15
 anchor_right = 1.0
@@ -2811,6 +2837,8 @@ spot_angle = 20.0
 shape = SubResource("CapsuleShape3D_rarhs")
 
 [node name="BenBot" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -62)
+visible = false
 script = ExtResource("11_bjd11")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BenBot"]
@@ -2818,9 +2846,12 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.1000001, 0)
 mesh = SubResource("QuadMesh_wp0k4")
 surface_material_override/0 = SubResource("StandardMaterial3D_bjd11")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BenBot"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="BenBot"]
+
+[node name="Area3D" type="Area3D" parent="BenBot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BenBot/Area3D"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.1000001, 0)
 shape = SubResource("ConvexPolygonShape3D_qmy6f")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="BenBot"]
-debug_enabled = true
+[connection signal="body_entered" from="Level/ChaseTrigger" to="Level/ChaseTrigger" method="_on_chase_trigger_body_entered"]

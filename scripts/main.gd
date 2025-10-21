@@ -2,6 +2,9 @@ extends Node3D
 
 @onready var item_ui = $UI/ItemScreen
 @onready var player = $Player
+@onready var door_1: CSGBox3D = $Level/Door1
+@onready var door_2: CSGBox3D = $Level/Door2
+
 
 var item_ui_active: bool = false
 var current_item: Node3D = null
@@ -23,6 +26,8 @@ func _process(_delta: float) -> void:
 		current_item.remove()
 		items_collected += 1
 		print("Items collected: ", items_collected)
+		if items_collected >= items_total:
+			open_door1()
 	
 func _on_item_pickup(item, item_image, flavor_text):
 	# set flavor text and image
@@ -43,3 +48,8 @@ func show_item_ui(toggle):
 		player.play("textflash")
 	else:
 		player.stop()
+
+func open_door1():
+	var tween = create_tween()
+	tween.tween_property(door_1, "position", door_1.position + Vector3(4, 0, 0), 5)
+	tween.play()
