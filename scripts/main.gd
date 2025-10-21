@@ -14,7 +14,7 @@ func _ready() -> void:
 		items_total += 1
 		item.connect("item_pickup", Callable(_on_item_pickup))
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# once the player has exited the UI
 	if item_ui_active and Input.is_action_just_pressed("enter"):
 		show_item_ui(false)
