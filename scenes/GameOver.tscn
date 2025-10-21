@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0ns2exvvfdb2"]
+
+[ext_resource type="Texture2D" uid="uid://bwearummyixqr" path="res://assets/textures/ben-inverted.png" id="2_qae0b"]
+[ext_resource type="FontFile" uid="uid://dgt7opul7e8ux" path="res://assets/Scary Vampire.ttf" id="2_skdqa"]
+
+[sub_resource type="Theme" id="Theme_6bcno"]
+default_font = ExtResource("2_skdqa")
+default_font_size = 75
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+z_index = 1
+offset_top = 608.0
+offset_right = 947.0
+offset_bottom = 1080.0
+theme = SubResource("Theme_6bcno")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Ben caught you!
+... and you're not getting a passing grade."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_qae0b")

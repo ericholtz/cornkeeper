@@ -27,6 +27,7 @@ func _on_chase_trigger_body_entered(body: Node3D) -> void:
 	player_spin1.play()
 	
 	# show ben
+	ben_bot.find_child("BenArea").get_child(0).set_deferred("disabled", false)
 	ben_bot.visible = true
 	ben_bot.movement_speed = 5
 	main.play_horror_sound()

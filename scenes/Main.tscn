@@ -20,8 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://bea3unyqo7h6k" path="res://assets/textures/ben.png" id="11_wp0k4"]
 [ext_resource type="Script" uid="uid://b8tixyokvj6yj" path="res://scripts/chase_trigger.gd" id="13_ft6cd"]
 [ext_resource type="Shader" uid="uid://dxjvowr432mde" path="res://shaders/pixelate.gdshader" id="15_ft6cd"]
-[ext_resource type="Shader" path="res://shaders/red.gdshader" id="16_bb450"]
 [ext_resource type="Script" uid="uid://bce3sduq4c3u5" path="res://scripts/end_trigger.gd" id="17_yxlcp"]
+[ext_resource type="Shader" uid="uid://bkchfo5cwd3ab" path="res://shaders/red.gdshader" id="16_bb450"]
+[ext_resource type="Script" uid="uid://be8ov4k75jn2k" path="res://scripts/ben_area.gd" id="22_yxlcp"]
 
 [sub_resource type="Theme" id="Theme_q8u5g"]
 default_font = ExtResource("2_jlsqs")
@@ -129,7 +130,8 @@ albedo_texture = ExtResource("11_wp0k4")
 billboard_mode = 2
 billboard_keep_scale = true
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qmy6f"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yxlcp"]
+size = Vector3(2.5, 4, 2.5)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_jlsqs")
@@ -2956,15 +2958,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bjd11")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="BenBot"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BenBot"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.1000001, 0)
-shape = SubResource("ConvexPolygonShape3D_qmy6f")
+[node name="BenArea" type="Area3D" parent="BenBot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+script = ExtResource("22_yxlcp")
 
-[node name="Area3D" type="Area3D" parent="BenBot"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BenBot/Area3D"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.1000001, 0)
-shape = SubResource("ConvexPolygonShape3D_qmy6f")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BenBot/BenArea"]
+shape = SubResource("BoxShape3D_yxlcp")
+disabled = true
 
 [connection signal="body_entered" from="Level/ChaseTrigger" to="Level/ChaseTrigger" method="_on_chase_trigger_body_entered"]
+
 [connection signal="body_entered" from="Level/EndTrigger" to="Level/EndTrigger" method="_on_body_entered"]
+
+[connection signal="body_entered" from="BenBot/BenArea" to="BenBot/BenArea" method="_on_body_entered"]
