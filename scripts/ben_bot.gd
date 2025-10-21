@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var player: CharacterBody3D = $"../Player"
 
-var movement_speed: float = 5.0
+var movement_speed: float = 0.0
 
 func _physics_process(_delta: float) -> void:
 	navigation_agent_3d.set_target_position(player.position)

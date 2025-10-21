@@ -12,7 +12,8 @@ func _ready() -> void:
 	sprite.texture = sprite_texture
 
 func _on_body_entered(body: Node3D) -> void:
-	emit_signal("item_pickup", self, sprite_texture, description)
+	if body.name == "Player":
+		emit_signal("item_pickup", self, sprite_texture, description)
 	
 func remove():
 	call_deferred("queue_free")
