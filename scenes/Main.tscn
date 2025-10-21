@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c4e51kfpx6arm"]
+[gd_scene load_steps=44 format=3 uid="uid://c4e51kfpx6arm"]
 
 [ext_resource type="Script" uid="uid://1hhm4frsfmg0" path="res://scripts/player.gd" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://b4f4ftufuuk3g" path="res://scripts/main.gd" id="1_jlsqs"]
@@ -16,11 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://byxkxn6xkw4u2" path="res://assets/textures/corn.png" id="8_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://bpxpxnpx2fboa" path="res://assets/textures/door.png" id="8_cvmbd"]
 [ext_resource type="Texture2D" uid="uid://cd7jn77jrt0hm" path="res://assets/textures/phone.png" id="10_1iba3"]
-[ext_resource type="Script" uid="uid://b2qkhw45a6f24" path="res://scripts/ben_bot.gd" id="11_bjd11"]
+[ext_resource type="Script" path="res://scripts/ben_bot.gd" id="11_bjd11"]
 [ext_resource type="Texture2D" uid="uid://bea3unyqo7h6k" path="res://assets/textures/ben.png" id="11_wp0k4"]
 [ext_resource type="Script" uid="uid://b8tixyokvj6yj" path="res://scripts/chase_trigger.gd" id="13_ft6cd"]
 [ext_resource type="Shader" uid="uid://dxjvowr432mde" path="res://shaders/pixelate.gdshader" id="15_ft6cd"]
-[ext_resource type="Shader" uid="uid://bkchfo5cwd3ab" path="res://shaders/red.gdshader" id="16_bb450"]
+[ext_resource type="Shader" path="res://shaders/red.gdshader" id="16_bb450"]
+[ext_resource type="Script" uid="uid://bce3sduq4c3u5" path="res://scripts/end_trigger.gd" id="17_yxlcp"]
 
 [sub_resource type="Theme" id="Theme_q8u5g"]
 default_font = ExtResource("2_jlsqs")
@@ -210,6 +211,62 @@ horizontal_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_lhr70")
 }
+
+[node name="EndScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/EndScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7882353)
+
+[node name="Label" type="Label" parent="UI/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -539.5
+offset_top = -125.5
+offset_right = 539.5
+offset_bottom = 125.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_q8u5g")
+theme_override_colors/font_color = Color(1, 0.26, 0.26, 1)
+theme_override_font_sizes/font_size = 120
+text = "congratulations, you escaped!
+The cornkeeper will live to see another day..."
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.5
+offset_top = 433.0
+offset_right = 572.5
+offset_bottom = 511.00037
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_q8u5g")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "made for the WSUV ACM-W Scream jam"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="UI"]
 offset_left = 20.0
@@ -2839,6 +2896,14 @@ script = ExtResource("13_ft6cd")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("BoxShape3D_bb450")
 
+[node name="EndTrigger" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.6, -182.76756)
+script = ExtResource("17_yxlcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/EndTrigger"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_bb450")
+
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.266518, 0)
 script = ExtResource("1_elqb8")
@@ -2900,3 +2965,4 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.1000001, 0)
 shape = SubResource("ConvexPolygonShape3D_qmy6f")
 
 [connection signal="body_entered" from="Level/ChaseTrigger" to="Level/ChaseTrigger" method="_on_chase_trigger_body_entered"]
+[connection signal="body_entered" from="Level/EndTrigger" to="Level/EndTrigger" method="_on_body_entered"]

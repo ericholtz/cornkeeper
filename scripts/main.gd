@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var item_screen = $UI/ItemScreen
+@onready var end_screen = $UI/EndScreen
 @onready var item_label = $UI/Label
 
 @onready var player = $Player
@@ -50,8 +51,12 @@ func show_item_ui(toggle):
 		player.play("textflash")
 	else:
 		player.stop()
+
 func update_item_label():
-	item_label.text = "Items: " + str(items_collected) + "/" + str(items_total)
+	item_label.text = "Items: " + str(items_collected) + "/" + str(items_total)		
+
+func show_end_ui():
+	end_screen.visible = true
 
 func open_door1():
 	var tween = create_tween()
