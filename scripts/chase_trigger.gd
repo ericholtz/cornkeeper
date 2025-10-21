@@ -39,8 +39,9 @@ func _on_chase_trigger_body_entered(body: Node3D) -> void:
 	player_spin2.play()
 	await player_spin2.finished
 	
-	# re-enable controls
+	# re-enable controls, play chase music
 	player.enable()
+	main.toggle_chase_music(true)
 	
 	# open door 2
 	var door2_open = create_tween()
