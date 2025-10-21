@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c4e51kfpx6arm"]
+[gd_scene load_steps=28 format=3 uid="uid://c4e51kfpx6arm"]
 
 [ext_resource type="Script" uid="uid://1hhm4frsfmg0" path="res://scripts/player.gd" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://b4f4ftufuuk3g" path="res://scripts/main.gd" id="1_jlsqs"]
@@ -10,11 +10,13 @@
 [ext_resource type="Shader" uid="uid://dxjvowr432mde" path="res://shaders/pixelate.gdshader" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://cch5xs6eu3kly" path="res://scenes/items/Item.tscn" id="5_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://bn2dojd6ksrww" path="res://assets/textures/ripped_jeans.png" id="6_lhr70"]
+[ext_resource type="Texture2D" uid="uid://boic2psxg1552" path="res://assets/textures/bush.png" id="7_bjd11"]
+[ext_resource type="Texture2D" uid="uid://ipvup1lhfjyg" path="res://assets/textures/can.png" id="7_qmy6f"]
 [ext_resource type="Texture2D" uid="uid://bx2q60i7chfgu" path="res://assets/textures/maze_sign.png" id="7_wp0k4"]
 
 [sub_resource type="Theme" id="Theme_q8u5g"]
 default_font = ExtResource("2_jlsqs")
-Label/font_sizes/font_size = 100
+Label/font_sizes/font_size = 80
 
 [sub_resource type="Animation" id="Animation_q8u5g"]
 length = 0.001
@@ -44,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.5609549, 0.5609549, 0.5609549, 1)]
+"values": [Color(1, 1, 1, 1), Color(0.48570347, 0.48570353, 0.48570347, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lhr70"]
@@ -64,6 +66,10 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.03
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bjd11"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwfav"]
+transparency = 1
+albedo_texture = ExtResource("7_bjd11")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmy6f"]
 transparency = 1
@@ -158,6 +164,7 @@ grow_vertical = 0
 theme = SubResource("Theme_q8u5g")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "press enter to continue..."
+horizontal_alignment = 1
 
 [node name="textflash" type="AnimationPlayer" parent="UI/ItemScreen"]
 libraries = {
@@ -185,10 +192,60 @@ If anyone finds this, I'm sorry.\""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1472645, 0.5393713, -3.1215582)
 sprite_texture = ExtResource("6_lhr70")
 description = "Ripped clothes
-
+This isn't looking good...
 "
 
+[node name="Can" parent="Items" instance=ExtResource("5_vcsgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2358627, 0.5066567, 0.1867795)
+sprite_texture = ExtResource("7_qmy6f")
+description = "Soda can
+
+damn city folk litering on my farm...
+I knew opening a corn maze was a bad idea!"
+
 [node name="Level" type="Node3D" parent="."]
+
+[node name="Bushes" type="Node3D" parent="Level"]
+
+[node name="bush1" type="MeshInstance3D" parent="Level/Bushes"]
+transform = Transform3D(-2.1740303, 1.5809876, -6.910716e-08, 0, -1.05125885e-07, -2.405, -1.8965276, -1.8123199, 7.921902e-08, -4.058, 2.1980858, 0.8960042)
+mesh = SubResource("PlaneMesh_bjd11")
+skeleton = NodePath("../../MazeSign")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwfav")
+
+[node name="bush2" type="MeshInstance3D" parent="Level/Bushes"]
+transform = Transform3D(-2.613526, 1.0184889, -4.451955e-08, 5.258955e-15, -1.05125885e-07, -2.4049997, -1.2217631, -2.1786938, 9.523376e-08, -0.13178456, 2.1980858, 3.7909312)
+sorting_offset = -5.0
+mesh = SubResource("PlaneMesh_bjd11")
+skeleton = NodePath("../../MazeSign")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwfav")
+
+[node name="bush3" type="MeshInstance3D" parent="Level/Bushes"]
+transform = Transform3D(-2.851797, -0.36382353, 1.5903247e-08, 7.723707e-15, -1.05125885e-07, -2.4049997, 0.43643713, -2.3773212, 1.0391603e-07, 4.3148947, 2.1980858, 4.509676)
+mesh = SubResource("PlaneMesh_bjd11")
+skeleton = NodePath("../../MazeSign")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwfav")
+
+[node name="bush4" type="MeshInstance3D" parent="Level/Bushes"]
+transform = Transform3D(-2.1931825, -1.562497, 6.8298945e-08, 1.2705003e-15, -1.05125885e-07, -2.4049997, 1.8743463, -1.8282858, 7.99169e-08, 8.255369, 2.1980858, 2.8678074)
+sorting_offset = -5.0
+mesh = SubResource("PlaneMesh_bjd11")
+skeleton = NodePath("../../MazeSign")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwfav")
+
+[node name="bush5" type="MeshInstance3D" parent="Level/Bushes"]
+transform = Transform3D(-0.6256575, -2.347765, 1.0262407e-07, 5.166375e-15, -1.05125885e-07, -2.4049997, 2.8163412, -0.521562, 2.2798172e-08, 10.231547, 2.1980858, -1.0001458)
+sorting_offset = -5.0
+mesh = SubResource("PlaneMesh_bjd11")
+skeleton = NodePath("../../MazeSign")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwfav")
+
+[node name="bush6" type="MeshInstance3D" parent="Level/Bushes"]
+transform = Transform3D(-0.87699145, 2.291189, -1.0015104e-07, 7.723707e-15, -1.05125885e-07, -2.4049997, -2.7484741, -0.7310795, 3.1956507e-08, -6.07187, 2.1980858, -2.4576526)
+sorting_offset = -1.26
+mesh = SubResource("PlaneMesh_bjd11")
+skeleton = NodePath("../../MazeSign")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwfav")
 
 [node name="MazeSign" type="MeshInstance3D" parent="Level"]
 transform = Transform3D(0.9469009, 0.7371422, 0, 3.222151e-08, -4.1390354e-08, -1.8, -0.7371422, 0.9469009, -7.86805e-08, -1.9690952, 1.7710409, -2.3581996)
@@ -1430,26 +1487,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Flashlight" type="SpotLight3D" parent="Player/head"]
-light_energy = 4.0
-spot_range = 10.54
-spot_angle = 20.0
-
-[node name="Camera3D2" type="Camera3D" parent="Player/head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -76)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Player/head/Camera3D2"]
-follow_viewport_enabled = true
-
-[node name="ColorRect" type="ColorRect" parent="Player/head/Camera3D2/CanvasLayer"]
-material = SubResource("ShaderMaterial_rarhs")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Flashlight2" type="SpotLight3D" parent="Player/head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -76)
 light_energy = 4.0
 spot_range = 10.54
 spot_angle = 20.0
