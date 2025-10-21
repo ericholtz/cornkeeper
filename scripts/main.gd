@@ -53,3 +53,6 @@ func open_door1():
 	var tween = create_tween()
 	tween.tween_property(door_1, "position", door_1.position + Vector3(4, 0, 0), 5)
 	tween.play()
+
+func play_horror_sound():
+	$HorrorSound.play()

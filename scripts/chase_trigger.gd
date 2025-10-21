@@ -1,5 +1,6 @@
 extends Area3D
 
+@onready var main = get_tree().get_current_scene()
 @onready var player: CharacterBody3D = $"../../Player"
 @onready var door_2: CSGBox3D = $"../Door2"
 @onready var ben_bot: CharacterBody3D = $"../../BenBot"
@@ -27,6 +28,7 @@ func _on_chase_trigger_body_entered(body: Node3D) -> void:
 	# show ben
 	ben_bot.visible = true
 	ben_bot.movement_speed = 5
+	main.play_horror_sound()
 	await get_tree().create_timer(4).timeout
 	
 	# turn player back around facing door
