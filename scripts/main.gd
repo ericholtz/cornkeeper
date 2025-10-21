@@ -12,6 +12,7 @@ var item_ui_active: bool = false
 var current_item: Node3D = null
 var items_total: int = 0
 var items_collected: int = 0
+var game_over = false
 
 func _ready() -> void:
 	# connect all item signals to this script
@@ -31,6 +32,11 @@ func _process(_delta: float) -> void:
 		update_item_label()
 		if items_collected >= items_total:
 			open_door1()
+
+func _input(_event: InputEvent) -> void:
+	# restart game if game_over
+	if game_over and Input.is_action_just_pressed("enter"):
+		get_tree().change_scene_to_file("res://scenes/GameMenu.tscn")
 	
 func _on_item_pickup(item, item_image, flavor_text):
 	# set flavor text and image
