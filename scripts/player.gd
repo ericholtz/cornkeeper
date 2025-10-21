@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var camera = $head/Camera3D
 @onready var main = get_tree().get_current_scene()
 const CAM_FOV = 75
-const JUMP_VELOCITY = 8
+const JUMP_VELOCITY = 6
 const WALK_SPEED = 5
 const RUN_SPEED = 8.5
 const LERP_SPEED = 8

@@ -57,18 +57,27 @@ _data = {
 sky_material = SubResource("ProceduralSkyMaterial_elqb8")
 
 [sub_resource type="Environment" id="Environment_0bbpv"]
-background_mode = 2
 sky = SubResource("Sky_rvslj")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bbpv"]
 albedo_texture = ExtResource("1_rvslj")
-uv1_scale = Vector3(0.16, 0.16, 0.16)
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_offset = Vector3(0, 0.5, 0)
 uv1_triplanar = true
 texture_filter = 0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
+transparency = 1
+albedo_texture = ExtResource("2_rarhs")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_offset = Vector3(0, 0.5, 0)
+uv1_triplanar = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rarhs"]
 shader = ExtResource("3_0bbpv")
-shader_parameter/pixel_size = 3.0
+shader_parameter/pixel_size = 4.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rarhs"]
 
@@ -149,7 +158,7 @@ environment = SubResource("Environment_0bbpv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -0.46210456, 0.88682544, 0, -0.88682544, -0.46210456, 0, 6.2376814, 0)
-light_energy = 2.0
+light_energy = 1.5
 
 [node name="Items" type="Node3D" parent="."]
 
@@ -166,23 +175,1221 @@ description = "mmm corn"
 [node name="Level" type="Node3D" parent="."]
 
 [node name="Floor" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.4505806e-08, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 7.4505806e-08, 9)
 use_collision = true
-size = Vector3(200, 0.2, 200)
+size = Vector3(1000, 0.2, 1000)
 material = SubResource("StandardMaterial3D_0bbpv")
 
 [node name="CornMaze" type="Node3D" parent="Level"]
 
-[node name="Sprite3D" type="Sprite3D" parent="Level/CornMaze"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3100002, 0)
-texture = ExtResource("2_rarhs")
+[node name="CornWall" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Level/CornMaze"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 3.3100002, -3)
-texture = ExtResource("2_rarhs")
+[node name="CornWall7" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall24" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall25" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall26" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall47" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall49" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall50" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall2" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall3" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -10)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall4" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -10)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall5" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall6" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall8" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall9" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall10" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall11" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -18)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall12" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1000001, -26)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall13" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -26)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall14" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -26)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall15" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -26)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall16" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall17" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall18" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall20" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall21" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall23" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall27" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall28" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall29" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall30" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall31" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall32" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall33" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall34" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -26)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall35" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall36" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall37" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall38" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall39" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.1000001, -46)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall40" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall41" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall42" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall43" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall44" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall45" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall46" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -38)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall48" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2.1000001, -46)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall51" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall52" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall53" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall54" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -10)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall55" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall56" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall57" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.1000001, -26)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall58" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall59" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall60" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -38)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall61" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall62" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall63" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1000001, -18)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall64" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.1000001, -12)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall68" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall69" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall117" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall118" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall70" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall71" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -10)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall72" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall73" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -18)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall74" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall75" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall136" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall137" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 2.1000001, -18)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall138" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall139" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall140" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall151" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall141" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall142" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall143" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall159" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall171" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -62)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall172" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall173" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall174" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -74)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall175" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -78)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall160" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall161" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall162" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall163" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall164" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1000001, -62)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall165" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall166" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall167" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -74)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall168" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1000001, -74)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall169" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall170" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall180" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall181" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall182" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall183" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall190" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall194" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -74)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall195" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -78)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall196" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -74)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall197" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.1000001, -74)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall198" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall199" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall200" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall201" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall202" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -78)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall203" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall191" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall192" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall193" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall184" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall185" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall186" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall187" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall188" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1000001, -62)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall176" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall177" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -74)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall178" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall179" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall152" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall153" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall154" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall155" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall156" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall157" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -54)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall158" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall144" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall145" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall146" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall147" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall148" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall149" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall150" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall76" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall77" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall78" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1000001, -38)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall79" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.1000001, -38)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall80" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -26)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall81" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall82" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall83" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -38)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall84" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall87" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall85" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1000001, -46)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall86" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -46)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall88" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall89" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -54)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall90" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall91" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -62)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall92" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall93" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall94" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -74)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall95" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -78)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall96" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall97" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall98" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -10)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall99" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall100" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -18)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall101" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -22)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall102" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -26)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall103" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -30)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall104" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -34)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall105" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -38)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall106" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -42)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall107" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -46)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall108" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -50)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall109" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -54)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall110" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -58)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall111" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -62)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall112" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -66)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall113" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -70)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall114" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -74)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall115" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -78)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall116" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall67" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall65" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1000001, -14)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall66" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1000001, -6)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall119" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall120" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall121" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall122" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall123" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall124" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall125" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall126" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall127" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall128" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall129" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall130" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall131" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall132" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall133" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall134" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall135" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.1000001, -82)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
+
+[node name="CornWall22" type="CSGBox3D" parent="Level/CornMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.1000001, -18)
+use_collision = true
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_rarhs")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.266518, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.266518, 0)
 script = ExtResource("1_elqb8")
 
 [node name="head" type="Node3D" parent="Player"]
@@ -200,6 +1407,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Flashlight" type="SpotLight3D" parent="Player/head"]
+light_energy = 4.0
+spot_range = 10.54
+spot_angle = 20.0
+
+[node name="Camera3D2" type="Camera3D" parent="Player/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -76)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/head/Camera3D2"]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Player/head/Camera3D2/CanvasLayer"]
+material = SubResource("ShaderMaterial_rarhs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Flashlight2" type="SpotLight3D" parent="Player/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -76)
+light_energy = 4.0
+spot_range = 10.54
+spot_angle = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_rarhs")
