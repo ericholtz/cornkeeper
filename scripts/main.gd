@@ -1,10 +1,11 @@
 extends Node3D
 
-@onready var item_ui = $UI/ItemScreen
+@onready var item_screen = $UI/ItemScreen
+@onready var item_label = $UI/Label
+
 @onready var player = $Player
 @onready var door_1: CSGBox3D = $Level/Door1
 @onready var door_2: CSGBox3D = $Level/Door2
-
 
 var item_ui_active: bool = false
 var current_item: Node3D = null
@@ -16,6 +17,7 @@ func _ready() -> void:
 	for item in get_node("Items").get_children():
 		items_total += 1
 		item.connect("item_pickup", Callable(_on_item_pickup))
+	update_item_label()
 	
 func _process(_delta: float) -> void:
 	# once the player has exited the UI
@@ -25,14 +27,14 @@ func _process(_delta: float) -> void:
 		
 		current_item.remove()
 		items_collected += 1
-		print("Items collected: ", items_collected)
+		update_item_label()
 		if items_collected >= items_total:
 			open_door1()
 	
 func _on_item_pickup(item, item_image, flavor_text):
 	# set flavor text and image
-	var texture_rect = item_ui.get_node("HBoxContainer/TextureRect")
-	var flavor_label = item_ui.get_node("HBoxContainer/Label")
+	var texture_rect = item_screen.get_node("HBoxContainer/TextureRect")
+	var flavor_label = item_screen.get_node("HBoxContainer/Label")
 	texture_rect.texture = item_image
 	flavor_label.text = flavor_text
 	
@@ -41,13 +43,15 @@ func _on_item_pickup(item, item_image, flavor_text):
 	show_item_ui(true)
 
 func show_item_ui(toggle):
-	item_ui.visible = toggle
+	item_screen.visible = toggle
 	item_ui_active = toggle
-	var player = item_ui.get_node("textflash")
+	var player = item_screen.get_node("textflash")
 	if toggle:
 		player.play("textflash")
 	else:
 		player.stop()
+func update_item_label():
+	item_label.text = "Items: " + str(items_collected) + "/" + str(items_total)
 
 func open_door1():
 	var tween = create_tween()
