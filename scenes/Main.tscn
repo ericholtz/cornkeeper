@@ -204,7 +204,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_q8u5g")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "press enter to continue..."
+text = "press E to continue..."
 horizontal_alignment = 1
 
 [node name="textflash" type="AnimationPlayer" parent="UI/ItemScreen"]
@@ -301,7 +301,9 @@ don't want any bad press y'know..."
 [node name="Paper" parent="Items" instance=ExtResource("5_vcsgt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.668636, 0.5066567, -29.888865)
 description = "\"It found me. I can't hide for much longer.
-If anyone finds this, I'm sorry.\""
+If anyone finds this, I'm sorry.\"
+
+..."
 
 [node name="Ripped clothes" parent="Items" instance=ExtResource("5_vcsgt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.014793, 0.5393713, -44.005325)
