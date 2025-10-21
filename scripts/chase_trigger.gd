@@ -39,9 +39,10 @@ func _on_chase_trigger_body_entered(body: Node3D) -> void:
 	player.enable()
 	
 	# open door 2
-	var tween = create_tween()
-	tween.tween_property(door_2, "position", door_2.position - Vector3(4, 0, 0), 4)
-	tween.play()
+	var door2_open = create_tween()
+	door2_open.tween_property(door_2, "position", door_2.position - Vector3(4, 0, 0), 3)
+	door2_open.play()
+	await door2_open.finished
 	
 	# delete area so it can't be re-activated
 	queue_free()
